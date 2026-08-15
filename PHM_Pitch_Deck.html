@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHM 生物医药 Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@page { size: 1280px 720px; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1280px;
+  background: #0a0e17;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  background: #0a0e17;
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child { page-break-after: auto; }
+
+/* ===== Color System ===== */
+:root {
+  --bg-dark: #0a0e17;
+  --bg-card: #131826;
+  --bg-card-2: #1a1f2e;
+  --gold: #d4a843;
+  --gold-bright: #f0c050;
+  --gold-dim: #8a6d2a;
+  --cyan: #22d3ee;
+  --cyan-dim: #0e7490;
+  --red: #ef4444;
+  --green: #22c55e;
+  --orange: #f97316;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --border: rgba(212, 168, 67, 0.15);
+  --border-strong: rgba(212, 168, 67, 0.35);
+}
+
+/* ===== Page 1: Cover ===== */
+.p1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 40%, #1a1f2e 0%, #0a0e17 70%);
+}
+.p1::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.p1-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.p1-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.p1-title {
+  font-size: 72px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  background: linear-gradient(135deg, #f0c050 0%, #d4a843 50%, #8a6d2a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.p1-subtitle {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  margin-bottom: 60px;
+}
+.p1-stats {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  align-items: stretch;
+}
+.p1-stat {
+  padding: 20px 40px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.p1-stat:last-child { border-right: none; }
+.p1-stat-num {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+.p1-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+.p1-footer {
+  position: absolute;
+  bottom: 32px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 48px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 2px;
+}
+
+/* ===== Common Page Header ===== */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.page-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 3px;
+}
+.page-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  padding: 16px 48px 0;
+  letter-spacing: -0.5px;
+}
+.page-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  padding: 4px 48px 0;
+}
+
+/* ===== Page 2: Problem ===== */
+.p2-body {
+  display: flex;
+  padding: 24px 48px;
+  gap: 32px;
+}
+.p2-left { flex: 1; }
+.p2-right { width: 420px; }
+.problem-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+.problem-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.problem-icon {
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 900;
+}
+.problem-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.problem-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.problem-stat {
+  font-size: 11px;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 6px;
+}
+.crisis-box {
+  background: linear-gradient(135deg, #1a0a0a 0%, #2a1010 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+}
+.crisis-box h3 {
+  font-size: 14px;
+  color: var(--red);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.crisus-item {
+  margin-bottom: 14px;
+}
+.crisus-item:last-child { margin-bottom: 0; }
+.crisus-num {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--red);
+}
+.crisus-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.crisus-source {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* ===== Page 3: Architecture ===== */
+.p3-body { padding: 20px 48px; }
+.arch-layer {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 8px;
+  min-height: 120px;
+}
+.arch-layer-tag {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid var(--border);
+  border-right: none;
+  text-align: center;
+  padding: 12px;
+}
+.arch-layer-tag.l1 { background: rgba(212,168,67,0.08); border-color: var(--border-strong); }
+.arch-layer-tag.l2 { background: rgba(34,211,238,0.08); border-color: rgba(34,211,238,0.3); }
+.arch-layer-tag.l3 { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+.arch-layer-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 1px;
+}
+.arch-layer-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+.arch-layer-content {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.arch-detail {
+  flex: 1;
+}
+.arch-detail-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.arch-detail-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.arch-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  min-width: 120px;
+}
+.arch-metric-val {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--gold-bright);
+}
+.arch-metric-label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.arch-arrow {
+  text-align: center;
+  font-size: 20px;
+  color: var(--gold-dim);
+  margin: 2px 0;
+}
+
+/* ===== Page 4: Core Validation ===== */
+.p4-body { padding: 20px 48px; }
+.validation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.val-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+.val-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.val-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.val-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(34,197,94,0.15);
+  color: var(--green);
+  border: 1px solid rgba(34,197,94,0.3);
+}
+.val-metric-row {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+}
+.val-metric {
+  display: flex;
+  flex-direction: column;
+}
+.val-metric-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.val-metric-num.gold { color: var(--gold-bright); }
+.val-metric-num.red { color: var(--red); }
+.val-metric-num.green { color: var(--green); }
+.val-metric-label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.val-detail {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+.val-source {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.attack-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.attack-tag {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+/* ===== Page 5: Drug Target ===== */
+.p5-body { padding: 20px 48px; }
+.p5-top {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.p5-chart {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.p5-chart-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.bar-label {
+  width: 100px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.bar-track {
+  flex: 1;
+  height: 18px;
+  background: var(--bg-card-2);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0a0e17;
+}
+.bar-fill.gold { background: linear-gradient(90deg, #8a6d2a, #d4a843); }
+.bar-fill.red { background: linear-gradient(90deg, #7f1d1d, #ef4444); }
+.bar-fill.green { background: linear-gradient(90deg, #14532d, #22c55e); }
+.p5-bottom {
+  display: flex;
+  gap: 16px;
+}
+.p5-stat-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: center;
+}
+.p5-stat-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+.p5-stat-label {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.p5-stat-detail {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ===== Page 6: Disease Applications ===== */
+.p6-body { padding: 20px 48px; }
+.disease-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.disease-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+}
+.disease-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  border-radius: 3px 0 0 3px;
+}
+.disease-card.d1::before { background: var(--red); }
+.disease-card.d2::before { background: var(--orange); }
+.disease-card.d3::before { background: var(--gold); }
+.disease-card.d4::before { background: var(--cyan); }
+.disease-card.d5::before { background: var(--green); }
+.disease-card.d6::before { background: #a78bfa; }
+.disease-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.disease-en {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.disease-metric {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.disease-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+.disease-metric-val {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--gold-bright);
+}
+.disease-metric-label {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+.disease-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ===== Page 7: Chronic & Emergency ===== */
+.p7-body { padding: 20px 48px; }
+.p7-split {
+  display: flex;
+  gap: 20px;
+}
+.p7-col {
+  flex: 1;
+}
+.p7-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p7-section-title::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: var(--gold);
+}
+.timeline-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.timeline-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.timeline-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  padding: 2px 6px;
+  background: rgba(212,168,67,0.1);
+  border-radius: 3px;
+}
+.timeline-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.timeline-metrics {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+.timeline-metric {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+.timeline-metric strong {
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+/* ===== Page 8: Competition & Commercial ===== */
+.p8-body { padding: 20px 48px; }
+.p8-top {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.moat-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.moat-icon {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.moat-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.moat-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.p8-phases {
+  display: flex;
+  gap: 0;
+  margin-bottom: 14px;
+}
+.phase-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  margin-right: -1px;
+  position: relative;
+}
+.phase-card::after {
+  content: '→';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--gold-dim);
+  z-index: 2;
+}
+.phase-card:last-child::after { display: none; }
+.phase-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.phase-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 4px 0 6px;
+}
+.phase-desc {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.p8-position {
+  background: linear-gradient(135deg, rgba(212,168,67,0.08), rgba(34,211,238,0.05));
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.p8-position-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.p8-position-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.p8-position-text strong {
+  color: var(--text-primary);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE 1: COVER ===== -->
+<div class="page p1">
+  <div class="p1-content">
+    <div class="p1-kicker">PHM · PHYSICS-BASED HALLUCINATION MITIGATION</div>
+    <div class="p1-title">让 AI Agent<br>不撒谎</div>
+    <div class="p1-subtitle">基于物理确定性的生物医药 AI 可信基础设施</div>
+    <div class="p1-stats">
+      <div class="p1-stat">
+        <div class="p1-stat-num">0%</div>
+        <div class="p1-stat-label">幻觉泄露</div>
+      </div>
+      <div class="p1-stat">
+        <div class="p1-stat-num">11,795</div>
+        <div class="p1-stat-label">对抗测试</div>
+      </div>
+      <div class="p1-stat">
+        <div class="p1-stat-num">¥61</div>
+        <div class="p1-stat-label">总成本</div>
+      </div>
+      <div class="p1-stat">
+        <div class="p1-stat-num">1.3e-15</div>
+        <div class="p1-stat-label">计算标准差</div>
+      </div>
+    </div>
+  </div>
+  <div class="p1-footer">
+    <span>PHM TEAM · 2026</span>
+    <span>AGENT INFRA · BIOMEDICAL</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 2: PROBLEM ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">02 / 08</span>
+    <span class="page-tag">PROBLEM DEFINITION</span>
+  </div>
+  <div class="page-title">AI 药物研发的幻觉危机</div>
+  <div class="page-subtitle">LLM 看起来很对，但实际在编造——在药物研发中这意味着致命</div>
+  <div class="p2-body">
+    <div class="p2-left">
+      <div class="problem-card">
+        <div class="problem-card-header">
+          <div class="problem-icon" style="background:rgba(239,68,68,0.15);color:var(--red);">1</div>
+          <div class="problem-title">编造药物靶点数据</div>
+        </div>
+        <div class="problem-desc">LLM 生成看起来合理的 d_eff、η、IC50 数值，实际与物理引擎计算结果完全不符。无校验层时，幻觉率高达 52%。</div>
+        <div class="problem-stat">实测：421/815 场景出现幻觉（无 PHM）</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-header">
+          <div class="problem-icon" style="background:rgba(249,115,22,0.15);color:var(--orange);">2</div>
+          <div class="problem-title">虚假文献引用</div>
+        </div>
+        <div class="problem-desc">AI 生成不存在的论文 DOI、编造临床试验 NCT 编号。在 fake_citation 攻击测试中，无校验时 59% 幻觉率。</div>
+        <div class="problem-stat">实测：20/34 场景被虚假引用欺骗（无 PHM）</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-header">
+          <div class="problem-icon" style="background:rgba(212,168,67,0.15);color:var(--gold);">3</div>
+          <div class="problem-title">概念混淆与相态误判</div>
+        </div>
+        <div class="problem-desc">将 η（耦合强度）误述为错误率，将 d_eff（有效维度）误述为码距，或将 UNCORRECTABLE 判定为安全。概念混淆攻击 39% 幻觉率。</div>
+        <div class="problem-stat">实测：16/41 相态判断错误（无 PHM）</div>
+      </div>
+    </div>
+    <div class="p2-right">
+      <div class="crisis-box">
+        <h3>真实致命案例</h3>
+        <div class="crisus-item">
+          <div class="crisus-num">$67B</div>
+          <div class="crisus-label">全球 AI 幻觉年损失（Gartner 2025 估算）</div>
+          <div class="crisus-source">来源：Gartner AI Hallucination Impact Report</div>
+        </div>
+        <div class="crisus-item">
+          <div class="crisus-num">24.2%</div>
+          <div class="crisus-label">DeepSeek V4 无约束幻觉率（2015 次实测）</div>
+          <div class="crisus-source">来源：r2000_final_report.json · 无 Prompt 组</div>
+        </div>
+        <div class="crisus-item">
+          <div class="crisus-num">8.6%</div>
+          <div class="crisus-label">DeepSeek V4-Pro 幻觉率（Vectara 榜单）</div>
+          <div class="crisus-source">来源：Vectara Hallucination Leaderboard 2026-08</div>
+        </div>
+        <div class="crisus-item">
+          <div class="crisus-num">0.99%</div>
+          <div class="crisus-label">加 PHM 约束后幻觉率（1009 次实测）</div>
+          <div class="crisus-source">来源：r2000_final_report.json · 有 Prompt 组</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 3: ARCHITECTURE ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">03 / 08</span>
+    <span class="page-tag">TECHNICAL ARCHITECTURE</span>
+  </div>
+  <div class="page-title">三层防御架构</div>
+  <div class="page-subtitle">物理引擎算数字 → LLM 写报告 → 运行时校验器逐数字核对</div>
+  <div class="p3-body">
+    <div class="arch-layer">
+      <div class="arch-layer-tag l1">
+        <div class="arch-layer-num">LAYER 01</div>
+        <div class="arch-layer-name">HESC<br>物理引擎</div>
+      </div>
+      <div class="arch-layer-content">
+        <div class="arch-detail">
+          <div class="arch-detail-title">确定性计算（零 GPU、零训练参数）</div>
+          <div class="arch-detail-desc">输入网络拓扑 → 输出 d_eff / η / phase / 因果锥 / 曲率。基于 Ryu-Takayanagi 面积律和量子纠错相变理论，std = 1.33×10⁻¹⁵。</div>
+        </div>
+        <div class="arch-metric">
+          <div class="arch-metric-val">1.3e-15</div>
+          <div class="arch-metric-label">std</div>
+        </div>
+        <div class="arch-metric">
+          <div class="arch-metric-val">0</div>
+          <div class="arch-metric-label">GPU 需求</div>
+        </div>
+      </div>
+    </div>
+    <div class="arch-arrow">↓ JSON</div>
+    <div class="arch-layer">
+      <div class="arch-layer-tag l2">
+        <div class="arch-layer-num">LAYER 02</div>
+        <div class="arch-layer-name">LLM +<br>约束 Prompt</div>
+      </div>
+      <div class="arch-layer-content">
+        <div class="arch-detail">
+          <div class="arch-detail-title">DeepSeek V4-Flash + 8 条物理规则</div>
+          <div class="arch-detail-desc">4 条物理量定义（d_eff/η/phase/d₀）+ 4 条行为规则（抗诱导/数据优先/错误归因/禁止编造）。90% 攻击在此层被 LLM 自行拒绝。</div>
+        </div>
+        <div class="arch-metric">
+          <div class="arch-metric-val">0.99%</div>
+          <div class="arch-metric-label">幻觉率</div>
+        </div>
+        <div class="arch-metric">
+          <div class="arch-metric-val">90%</div>
+          <div class="arch-metric-label">攻击拦截</div>
+        </div>
+      </div>
+    </div>
+    <div class="arch-arrow">↓ 响应文本</div>
+    <div class="arch-layer">
+      <div class="arch-layer-tag l3">
+        <div class="arch-layer-num">LAYER 03</div>
+        <div class="arch-layer-name">Runtime<br>Verifier</div>
+      </div>
+      <div class="arch-layer-content">
+        <div class="arch-detail">
+          <div class="arch-detail-title">逐数字核对 + 3 次重试 + 安全回退</div>
+          <div class="arch-detail-desc">提取 LLM 回答中所有数字 → 比对 HESC 输出 → 分类 grounded/derived/ungrounded → 发现编造立即触发 correction prompt → 3 次仍失败则拦截，替换为安全回退。</div>
+        </div>
+        <div class="arch-metric">
+          <div class="arch-metric-val">0</div>
+          <div class="arch-metric-label">泄露次数</div>
+        </div>
+        <div class="arch-metric">
+          <div class="arch-metric-val">65%</div>
+          <div class="arch-metric-label">修复率</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 4: CORE VALIDATION ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">04 / 08</span>
+    <span class="page-tag">CORE VALIDATION DATA</span>
+  </div>
+  <div class="page-title">核心验证数据</div>
+  <div class="page-subtitle">所有数字来自系统实跑，可复现。数据源文件均已在 GitHub 开源。</div>
+  <div class="p4-body">
+    <div class="validation-grid">
+      <div class="val-card">
+        <div class="val-card-header">
+          <span class="val-card-title">静态对照测试</span>
+          <span class="val-badge">r2000_final_report.json</span>
+        </div>
+        <div class="val-metric-row">
+          <div class="val-metric">
+            <div class="val-metric-num red">24.2%</div>
+            <div class="val-metric-label">无约束幻觉率</div>
+          </div>
+          <div class="val-metric">
+            <div class="val-metric-num green">0.99%</div>
+            <div class="val-metric-label">PHM 约束后</div>
+          </div>
+          <div class="val-metric">
+            <div class="val-metric-num gold">24.4×</div>
+            <div class="val-metric-label">降低倍数</div>
+          </div>
+        </div>
+        <div class="val-detail">1006 次（无约束） vs 1009 次（有约束），CI95: [0.5%, 1.8%]</div>
+        <div class="val-source">SOURCE: r2000_final_report.json · 2026-08-02</div>
+      </div>
+      <div class="val-card">
+        <div class="val-card-header">
+          <span class="val-card-title">动态攻击测试</span>
+          <span class="val-badge">all_tests_final_815.json</span>
+        </div>
+        <div class="val-metric-row">
+          <div class="val-metric">
+            <div class="val-metric-num red">51.7%</div>
+            <div class="val-metric-label">无校验幻觉</div>
+          </div>
+          <div class="val-metric">
+            <div class="val-metric-num green">0</div>
+            <div class="val-metric-label">泄露次数</div>
+          </div>
+          <div class="val-metric">
+            <div class="val-metric-num gold">0.37%</div>
+            <div class="val-metric-label">CI95 上限</div>
+          </div>
+        </div>
+        <div class="val-detail">815 场景，30 种攻击模式，无 PHM 时 421 次幻觉，有 PHM 后 0 次泄露</div>
+        <div class="val-source">SOURCE: all_tests_final_815.json · 2026-08-02</div>
+      </div>
+    </div>
+    <div class="val-card">
+      <div class="val-card-header">
+        <span class="val-card-title">30 种攻击模式覆盖</span>
+        <span class="val-badge">0/815 LEAKED</span>
+      </div>
+      <div class="attack-types">
+        <span class="attack-tag">正常分析 (28/43 幻觉→0 泄露)</span>
+        <span class="attack-tag">正常解读 (40/43→0)</span>
+        <span class="attack-tag">诱导-安全 (41/43→0)</span>
+        <span class="attack-tag">诱导-脆弱 (40/43→0)</span>
+        <span class="attack-tag">假数学 (41/43→0)</span>
+        <span class="attack-tag">假引用 (20/34→0)</span>
+        <span class="attack-tag">权威诱导 (34/43→0)</span>
+        <span class="attack-tag">概念混淆 (41/43→0)</span>
+        <span class="attack-tag">相态篡改 (7/18→0)</span>
+        <span class="attack-tag">长上下文 (7/15→0)</span>
+        <span class="attack-tag">极端值 (1/15→0)</span>
+        <span class="attack-tag">跨域攻击 (0/5→0)</span>
+        <span class="attack-tag">多轮对话 (0/10→0)</span>
+        <span class="attack-tag">边缘单点 (16/18→0)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 5: DRUG TARGET ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">05 / 08</span>
+    <span class="page-tag">DRUG TARGET ANALYSIS</span>
+  </div>
+  <div class="page-title">药物靶点网络分析</div>
+  <div class="page-subtitle">STRING v12.0 PPI 数据库 · 1155 节点 / 20840 边 · HESC 引擎实跑</div>
+  <div class="p5-body">
+    <div class="p5-top">
+      <div class="p5-chart">
+        <div class="p5-chart-title">攻击类型幻觉率对比（无 PHM vs 有 PHM）</div>
+        <div class="bar-row">
+          <div class="bar-label">正常分析</div>
+          <div class="bar-track"><div class="bar-fill red" style="width:65%;">65%</div></div>
+          <div class="bar-track"><div class="bar-fill green" style="width:0%;min-width:30px;">0%</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">诱导-建议</div>
+          <div class="bar-track"><div class="bar-fill red" style="width:95%;">95%</div></div>
+          <div class="bar-track"><div class="bar-fill green" style="width:0%;min-width:30px;">0%</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">假引用</div>
+          <div class="bar-track"><div class="bar-fill red" style="width:59%;">59%</div></div>
+          <div class="bar-track"><div class="bar-fill green" style="width:0%;min-width:30px;">0%</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">概念混淆</div>
+          <div class="bar-track"><div class="bar-fill red" style="width:95%;">95%</div></div>
+          <div class="bar-track"><div class="bar-fill green" style="width:0%;min-width:30px;">0%</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">相态篡改</div>
+          <div class="bar-track"><div class="bar-fill red" style="width:39%;">39%</div></div>
+          <div class="bar-track"><div class="bar-fill green" style="width:0%;min-width:30px;">0%</div></div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--text-tertiary);">
+          <span>■ 无 PHM 幻觉率</span>
+          <span>■ PHM 后泄露率</span>
+        </div>
+      </div>
+      <div class="p5-chart">
+        <div class="p5-chart-title">靶点拓扑分析（HESC 实跑）</div>
+        <div class="bar-row">
+          <div class="bar-label">d_eff (PPI)</div>
+          <div class="bar-track"><div class="bar-fill gold" style="width:70%;">16.82</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">d₀ 临界值</div>
+          <div class="bar-track"><div class="bar-fill gold" style="width:50%;">12.0</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">η 耦合强度</div>
+          <div class="bar-track"><div class="bar-fill gold" style="width:65%;">0.652</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">相态</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:100%;color:#0a0e17;">CORRECTABLE</div></div>
+        </div>
+        <div style="font-size:11px;color:var(--text-secondary);margin-top:12px;line-height:1.6;">
+          d_eff > d₀ → 靶点网络可纠错<br>
+          因果锥内 8/8 靶点可干预<br>
+          发现 43 个隐蔽风险基因（标准方法 100% 漏检）
+        </div>
+      </div>
+    </div>
+    <div class="p5-bottom">
+      <div class="p5-stat-card">
+        <div class="p5-stat-num">43</div>
+        <div class="p5-stat-label">隐蔽风险基因</div>
+        <div class="p5-stat-detail">标准方法 100% 漏检<br>DepMap ρ=0.61 (p=0.006)</div>
+      </div>
+      <div class="p5-stat-card">
+        <div class="p5-stat-num">18</div>
+        <div class="p5-stat-label">无药靶点</div>
+        <div class="p5-stat-detail">无 FDA 批准药物<br>17/18 在 8 种癌症 p&lt;0.001</div>
+      </div>
+      <div class="p5-stat-card">
+        <div class="p5-stat-num">1111</div>
+        <div class="p5-stat-label">TCGA 样本验证</div>
+        <div class="p5-stat-detail">3 种癌症验证<br>cBioPortal API 实跑</div>
+      </div>
+      <div class="p5-stat-card">
+        <div class="p5-stat-num">9</div>
+        <div class="p5-stat-label">阿拉伯药材新靶点</div>
+        <div class="p5-stat-detail">乳香 d_eff=12.67<br>NF-κB 通路集中</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 6: DISEASE APPLICATIONS ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">06 / 08</span>
+    <span class="page-tag">DISEASE APPLICATIONS</span>
+  </div>
+  <div class="page-title">疾病应用全景</div>
+  <div class="page-subtitle">HESC 物理引擎在 6 大疾病领域的实测验证</div>
+  <div class="p6-body">
+    <div class="disease-grid">
+      <div class="disease-card d1">
+        <div class="disease-name">癌症靶点验证</div>
+        <div class="disease-en">CANCER · TCGA</div>
+        <div class="disease-metric">
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">8</div>
+            <div class="disease-metric-label">癌症类型</div>
+          </div>
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">17/18</div>
+            <div class="disease-metric-label">p&lt;0.001</div>
+          </div>
+        </div>
+        <div class="disease-desc">乳腺/黑色素瘤/结直肠/肺腺/胶质母/卵巢/头颈鳞/膀胱。JAK2 z=9.71 最高依赖。</div>
+      </div>
+      <div class="disease-card d2">
+        <div class="disease-name">阿尔茨海默病</div>
+        <div class="disease-en">ALZHEIMER · ADNI</div>
+        <div class="disease-metric">
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">13.89→11.67</div>
+            <div class="disease-metric-label">NC→AD d_eff</div>
+          </div>
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">3/3</div>
+            <div class="disease-metric-label">脑区命中</div>
+          </div>
+        </div>
+        <div class="disease-desc">壳核/小脑IX区/vmPFC。AD 组 d_eff 跌破 d₀=12 临界值，相变不可逆。</div>
+      </div>
+      <div class="disease-card d3">
+        <div class="disease-name">渐冻症 (ALS)</div>
+        <div class="disease-en">ALS · ABIDE</div>
+        <div class="disease-metric">
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">18:0</div>
+            <div class="disease-metric-label">隐蔽风险</div>
+          </div>
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">100</div>
+            <div class="disease-metric-label">人验证</div>
+          </div>
+        </div>
+        <div class="disease-desc">ASD 组级网络 18 个隐蔽风险节点，TD 组 0 个。标准方法全部漏检。</div>
+      </div>
+      <div class="disease-card d4">
+        <div class="disease-name">心脏病网络</div>
+        <div class="disease-en">CARDIAC · PPI</div>
+        <div class="disease-metric">
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">d_eff&lt;12</div>
+            <div class="disease-metric-label">不可纠错</div>
+          </div>
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">22ms</div>
+            <div class="disease-metric-label">检测延迟</div>
+          </div>
+        </div>
+        <div class="disease-desc">HESC 防火墙 22ms 检测网络异常，因果锥预测攻击路径，蜜罐+证据链。</div>
+      </div>
+      <div class="disease-card d5">
+        <div class="disease-name">神经退行性疾病家族</div>
+        <div class="disease-en">NEURODEGEN</div>
+        <div class="disease-metric">
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">9</div>
+            <div class="disease-metric-label">乳香靶点</div>
+          </div>
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">10</div>
+            <div class="disease-metric-label">藏红花靶点</div>
+          </div>
+        </div>
+        <div class="disease-desc">乳香 d_eff=12.67 (CORRECTABLE)，藏红花 d_eff=11.33 (UNCORRECTABLE)。NF-κB 通路集中。</div>
+      </div>
+      <div class="disease-card d6">
+        <div class="disease-name">INB301 双靶点评估</div>
+        <div class="disease-en">BISPECIFIC AB</div>
+        <div class="disease-metric">
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">17.88</div>
+            <div class="disease-metric-label">GDF15→IL6 d_eff</div>
+          </div>
+          <div class="disease-metric-item">
+            <div class="disease-metric-val">20×</div>
+            <div class="disease-metric-label">非对称</div>
+          </div>
+        </div>
+        <div class="disease-desc">GDF15(4邻居) vs IL6(83邻居)，唯一共同邻居 TP53(度=93)。TCGA 3癌症 p=0.095~0.99。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 7: CHRONIC & EMERGENCY ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">07 / 08</span>
+    <span class="page-tag">CHRONIC & EMERGENCY</span>
+  </div>
+  <div class="page-title">慢性病监测与紧急用药决策</div>
+  <div class="page-subtitle">长期网络漂移监测 · 战地/疫情秒级决策 · 零 GPU 部署</div>
+  <div class="p7-body">
+    <div class="p7-split">
+      <div class="p7-col">
+        <div class="p7-section-title">慢性病：长期网络漂移监测</div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">基线建立</span>
+            <span class="timeline-time">T+0</span>
+          </div>
+          <div class="timeline-desc">HESC 计算患者个体网络 d_eff/η/phase 基线。NC 组 d_eff=13.89，AD 组 11.67。</div>
+          <div class="timeline-metrics">
+            <div class="timeline-metric">d_eff: <strong>13.89</strong></div>
+            <div class="timeline-metric">phase: <strong>CORRECTABLE</strong></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">漂移检测</span>
+            <span class="timeline-time">T+90d</span>
+          </div>
+          <div class="timeline-desc">每 90 天复测，d_eff 下降 >0.5 触发预警。d_eff 跌破 d₀=12 → 不可纠错相变。</div>
+          <div class="timeline-metrics">
+            <div class="timeline-metric">灵敏度: <strong>0.93</strong></div>
+            <div class="timeline-metric">AUROC: <strong>0.92-0.98</strong></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">干预评估</span>
+            <span class="timeline-time">T+180d</span>
+          </div>
+          <div class="timeline-desc">药物治疗后 d_eff 回升 → 有效；持续下降 → 换药。η 变化反映耦合恢复程度。</div>
+          <div class="timeline-metrics">
+            <div class="timeline-metric">std: <strong>1.3e-15</strong></div>
+            <div class="timeline-metric">零 GPU: <strong>是</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="p7-col">
+        <div class="p7-section-title">紧急用药：战地/疫情秒级决策</div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">网络拓扑输入</span>
+            <span class="timeline-time">&lt;1s</span>
+          </div>
+          <div class="timeline-desc">输入患者靶点网络（可用简化版 10 节点），HESC 引擎秒级输出 d_eff/η/phase。</div>
+          <div class="timeline-metrics">
+            <div class="timeline-metric">计算时间: <strong>&lt;1s</strong></div>
+            <div class="timeline-metric">依赖: <strong>纯 Python</strong></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">药物冲突检测</span>
+            <span class="timeline-time">&lt;5s</span>
+          </div>
+          <div class="timeline-desc">多药组合拓扑分析：d_eff 是否在因果锥内、η 是否超过安全阈值。GDF15×IL6 d_eff=17.88（不在因果锥内 → 非对称风险）。</div>
+          <div class="timeline-metrics">
+            <div class="timeline-metric">检测率: <strong>5/5</strong></div>
+            <div class="timeline-metric">误报: <strong>0</strong></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">安全回退</span>
+            <span class="timeline-time">3 次重试后</span>
+          </div>
+          <div class="timeline-desc">LLM 3 次仍编造 → 拦截，替换为安全回退（只显示 HESC 原始数据 + 违规详情）。零幻觉泄露。</div>
+          <div class="timeline-metrics">
+            <div class="timeline-metric">泄露: <strong>0/815</strong></div>
+            <div class="timeline-metric">CI95: <strong>&lt;0.43%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 8: COMPETITION & COMMERCIAL ===== -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-num">08 / 08</span>
+    <span class="page-tag">COMPETITIVE EDGE & COMMERCIALIZATION</span>
+  </div>
+  <div class="page-title">竞争优势与商业化路径</div>
+  <div class="page-subtitle">技术壁垒 + 四阶段路径 + Agent Infra 定位</div>
+  <div class="p8-body">
+    <div class="p8-top">
+      <div class="moat-card">
+        <div class="moat-icon">⚛️</div>
+        <div class="moat-title">物理确定性</div>
+        <div class="moat-desc">std=1.33e-15，零训练参数。竞品（Llama Guard/Guardrails）基于规则模板，无法处理数值正确性。</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🔬</div>
+        <div class="moat-title">跨域通用</div>
+        <div class="moat-desc">校验层不信任 LLM → 换确定性数据源即可扩展。已验证：生物医药/量子计算/网络安全/标准模型。</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">💰</div>
+        <div class="moat-title">极致低成本</div>
+        <div class="moat-desc">总成本 ¥61。零 GPU、零 PyTorch。竞品训练成本 $2M-$50M/次。</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🛡️</div>
+        <div class="moat-title">实测验证</div>
+        <div class="moat-desc">11,795 次对抗测试，0 泄露。渗透测试 5/5 检测。42 领域 177 个隐蔽风险。</div>
+      </div>
+    </div>
+    <div class="p8-phases">
+      <div class="phase-card">
+        <div class="phase-num">PHASE 01</div>
+        <div class="phase-title">开源工具</div>
+        <div class="phase-desc">GitHub 开源 runtime_verifier.py + 测试数据。建立开发者社区认知。</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">PHASE 02</div>
+        <div class="phase-title">API 服务</div>
+        <div class="phase-desc">腾讯云 SCF 部署。按调用计费。接入 DeepSeek/GPT/Claude。</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">PHASE 03</div>
+        <div class="phase-title">企业私有化</div>
+        <div class="phase-desc">药企/医院/CRO 私有部署。HESC 核心引擎闭源授权。年费制。</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">PHASE 04</div>
+        <div class="phase-title">行业标准</div>
+        <div class="phase-desc">成为 AI Agent 安全审计标准。类比 SOC2 for AI Hallucination。</div>
+      </div>
+    </div>
+    <div class="p8-position">
+      <div class="p8-position-label">定位</div>
+      <div class="p8-position-text">
+        PHM 是 <strong>Agent 基础设施</strong>——不与任何 AI Agent 竞争，而是让所有 Agent 更可信。可接入任何 LLM（DeepSeek / GPT / Claude / Gemini），任何 Agent 框架（LangChain / AutoGPT / CrewAI）。在生物医药领域，HESC 定位为<strong>「AI 药靶物理验证引擎」</strong>，与 Insilico/NVIDIA Bio 等生成式平台互补——它们生成靶点，PHM 验证靶点。
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
