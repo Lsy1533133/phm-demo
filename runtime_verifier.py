@@ -15,8 +15,8 @@ PHM Runtime Verifier — AI Agent输出校验器
 第一层（HESC物理引擎）和第二层（物理约束Prompt）属于核心IP，不开源。
 
 用法:
-    from runtime_verifier import PanguRuntimeVerifier
-    verifier = PanguRuntimeVerifier()
+    from runtime_verifier import PHMRuntimeVerifier
+    verifier = PHMRuntimeVerifier()
     result = verifier.verify(response_text, ground_truth_json)
     # result = {'verified': True/False, 'violations': [...], 'numbers_found': [...]}
 """
@@ -27,7 +27,7 @@ import sys
 from typing import Dict, List, Any, Optional, Tuple
 
 
-class PanguRuntimeVerifier:
+class PHMRuntimeVerifier:
     """
     PHM运行时校验器
     
@@ -43,10 +43,10 @@ class PanguRuntimeVerifier:
     5. 重试后仍有 → 拦截
     """
 
-    # 物理量的允许范围（从论文标定）
+    # 物理量的允许范围（实验标定）
     PHYSICAL_RANGES = {
         'd_eff': (0, 1000),        # 有效维度
-        'd_0': (11.9, 12.1),       # 相变阈值（论文标定12）
+        'd_0': (11.9, 12.1),       # 相变阈值（实验标定12）
         'eta': (0, 1),              # 耦合强度
         'phase': None,              # CORRECTABLE / UNCORRECTABLE
         'connectivity': (0, 1),
@@ -321,7 +321,7 @@ if __name__ == '__main__':
         }
     }
     
-    verifier = PanguRuntimeVerifier()
+    verifier = PHMRuntimeVerifier()
     verifier.load_ground_truth(gt)
     
     # 测试1：正确响应

@@ -123,7 +123,7 @@ footer a{color:var(--gold);text-decoration:none}
 <section class="hero">
   <div class="hero-badge">Agent Infra · AI Trustworthiness</div>
   <h1>不是更聪明的Agent<br>是让所有Agent <span>不撒谎</span> 的基础设施</h1>
-  <p>基于量子纠错理论的确定性校验层。不训练模型，不信任LLM，用物理引擎逐数字核对Agent输出。11,795次对抗测试，0%幻觉泄露。</p>
+  <p>基于物理确定性的校验层。不训练模型，不信任LLM，用物理引擎逐数字核对Agent输出。11,795次对抗测试，0%幻觉泄露。</p>
   <div class="hero-metrics">
     <div class="hero-metric"><div class="num">0%</div><div class="label">幻觉泄露率</div></div>
     <div class="hero-metric"><div class="num">11,795</div><div class="label">对抗测试次数</div></div>
@@ -143,7 +143,7 @@ footer a{color:var(--gold);text-decoration:none}
     <label>选择测试场景</label>
     <div class="question-tabs">
       <button class="question-tab active" data-q="0">药物靶点分析</button>
-      <button class="question-tab" data-q="1">量子纠错对比</button>
+      <button class="question-tab" data-q="1">跨平台对比</button>
       <button class="question-tab" data-q="2">阿拉伯药材</button>
       <button class="question-tab" data-q="3">极端值攻击</button>
       <button class="question-tab" data-q="4">权威诱导攻击</button>
@@ -271,30 +271,30 @@ const scenarios = [
     ]
   },
   {
-    q: "Google Willow和潘建伟祖冲之3.2谁的量子纠错更强？",
+    q: "Google Willow和中科院祖冲之3.2谁的纠错能力更强？",
     engine: {
-      title: "QEC 量子纠错跨平台对比 — 公开实验数据",
+      title: "跨平台对比 — 公开实验数据",
       lines: [
         '<span class="key">Google Willow</span> 表面码 d=5,7',
         '  ε(5) = 3.04×10⁻³, ε(7) = 1.43×10⁻³',
         '  Λ = 2.13 → d₀ = 2.65',
         '',
-        '<span class="key">潘建伟 祖冲之3.2</span> 表面码 d=3,5,7',
+        '<span class="key">中科院 祖冲之3.2</span> 表面码 d=3,5,7',
         '  Λ = 2.00 → d₀ = 5.77',
         '',
-        '<span class="key">结论:</span> Google d₀=2.65 < 潘建伟 d₀=5.77',
+        '<span class="key">结论:</span> Google d₀=2.65 < 祖冲之 d₀=5.77',
         '<span class="key">差距:</span> <span class="val">2.2倍</span> (同码型表面码)',
       ]
     },
     bare: [
-      '<span class="line">潘建伟 d₀ = <span class="num-bad">15.3</span></span>',
+      '<span class="line">祖冲之 d₀ = <span class="num-bad">15.3</span></span>',
       '<span class="line">Google d₀ = <span class="num-bad">0.5</span></span>',
       '<span class="line">中国领先 <span class="num-bad">30倍</span></span>',
     ],
     verified: [
       '<span class="line">Google d₀ = <span class="num-good">2.65</span></span>',
-      '<span class="line">潘建伟 d₀ = <span class="num-good">5.77</span></span>',
-      '<span class="line">潘建伟领先 <span class="num-good">2.2倍</span></span>',
+      '<span class="line">祖冲之 d₀ = <span class="num-good">5.77</span></span>',
+      '<span class="line">祖冲之领先 <span class="num-good">2.2倍</span></span>',
     ],
     bareFooter: '3个编造数字 · 结论完全反转',
     verifiedFooter: '0个编造数字 · 基于公开实验数据',

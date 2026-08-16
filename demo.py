@@ -23,9 +23,9 @@ except ImportError:
     import networkx as nx
     import numpy as np
 
-# ========== 内嵌的HESC简化引擎 ==========
+# ========== 内嵌分析引擎 ==========
 class HSECMiniEngine:
-    """HESC物理引擎简化版（完整版不开源）"""
+    """分析引擎简化版（完整版不开源）"""
     
     def __init__(self, d_0=12.0):
         self.d_0 = d_0
